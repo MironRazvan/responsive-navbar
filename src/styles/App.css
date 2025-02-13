@@ -128,6 +128,12 @@
 	background-color: var(--secondary);
 	color: var(--text);
 
+	font-size: 0.7rem;
+
+	display: flex;
+	justify-content: space-evenly;
+	padding: 0.1rem;
+
 	transition-property: background-color color;
 	transition-duration: 0.3s;
 	transition-behavior: ease-in-out;
@@ -150,10 +156,10 @@
 	.menu-items {
 		align-items: flex-start;
 		justify-content: flex-start;
-		padding: 1rem 0.5rem;
+		padding: 1rem 0.25rem;
 
 		overflow: hidden;
-		width: 2.5rem;
+		width: 2rem;
 
 		background-color: var(--secondary);
 		/* background-color: color-mix(in srgb, var(--secondary) 90%, transparent); */
@@ -177,6 +183,7 @@
 
 	.menu-item > svg {
 		display: block;
+		transform: scale(0.7);
 	}
 
 	.menu-button {
@@ -189,9 +196,19 @@
 	.menu-button > svg {
 		margin-left: 0;
 		transition: transform 0.3s ease-in-out;
+		transform: scale(0.7);
 	}
 
 	.menu-items.expanded .menu-button > svg {
-		transform: rotateY(180deg) translateX(-250%);
+		transform: rotateZ(180deg) translateX(-250%) scale(0.7);
+	}
+
+	.theme-toggle > svg {
+		transform: scale(0.7);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.menu-items.expanded .theme-toggle > svg {
+		transform: translateX(125%) scale(0.7);
 	}
 }
