@@ -1,15 +1,21 @@
 import { Link } from "react-router-dom"
-import { ChevronsRight, House, Info } from "lucide-react"
-// import { useState } from "react"
+import { ChevronsRight, House, Info, Moon, Sun } from "lucide-react"
+
+import useThemeStore from "../stores/themeStore"
+
+import { useEffect } from "react"
 
 const Header = () => {
-	// const [isExpanded, setIsExpanded] = useState(false)
+	const { theme, toggleTheme } = useThemeStore()
 
-	const toggleExpanded = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-		console.log(e.currentTarget.parentElement?.parentElement)
-		const element = document.getElementsByClassName(
-			"menu-items"
-		)[0] as HTMLDivElement
+	useEffect(() => {
+		const root = document.documentElement
+		root.setAttribute("data-theme", theme)
+	}, [theme])
+
+	const toggleExpanded = () => {
+		const element = document.querySelector(".menu-items")
+		console.log(element)
 
 		if (element) {
 			element.classList.toggle("expanded")
@@ -23,7 +29,7 @@ const Header = () => {
 				<ul className="menu-list">
 					<li
 						className="menu-button"
-						onClick={(e) => toggleExpanded(e)}
+						onClick={() => toggleExpanded()}
 					>
 						<ChevronsRight />
 					</li>
@@ -38,6 +44,9 @@ const Header = () => {
 							<Info />
 							<p>About</p>
 						</Link>
+					</li>
+					<li className="theme-toggle" onClick={toggleTheme}>
+						{theme === "light" ? <Moon /> : <Sun />}
 					</li>
 				</ul>
 			</nav>

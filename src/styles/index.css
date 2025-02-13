@@ -3,6 +3,22 @@
 	--font-strong: "Julius Sans One";
 }
 
+:root[data-theme="light"] {
+	--text: rgb(16, 17, 20);
+	--background: rgb(247, 247, 248);
+	--primary: rgb(119, 126, 146);
+	--secondary: rgb(195, 184, 182);
+	--accent: rgb(164, 163, 142);
+}
+
+:root[data-theme="dark"] {
+	--text: rgb(235, 236, 239);
+	--background: rgb(7, 7, 8);
+	--primary: rgb(109, 116, 136);
+	--secondary: rgb(73, 62, 60);
+	--accent: rgb(113, 112, 91);
+}
+
 html,
 * {
 	padding: 0;
