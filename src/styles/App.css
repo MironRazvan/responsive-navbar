@@ -73,17 +73,24 @@
 	stroke: var(--text);
 }
 
-.menu-item > a {
+.menu-item {
+	color: var(--text);
 	text-decoration: none;
 
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+}
 
+.menu-item.active {
+	color: var(--primary);
+}
+
+.menu-item > a {
 	color: var(--text);
 }
 
-.menu-item > a > svg {
+.menu-item > svg {
 	display: none;
 }
 
@@ -168,7 +175,7 @@
 		transform: none;
 	}
 
-	.menu-item > a > svg {
+	.menu-item > svg {
 		display: block;
 	}
 

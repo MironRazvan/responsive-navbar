@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { ChevronsRight, House, Info, Moon, Sun } from "lucide-react"
 
 import useThemeStore from "../stores/themeStore"
 
 import { useEffect } from "react"
+
+import clsx from "clsx"
 
 const Header = () => {
 	const { theme, toggleTheme } = useThemeStore()
@@ -22,33 +24,39 @@ const Header = () => {
 		}
 	}
 
+	const getClassName = (initial: string) => {
+		return clsx(
+			initial,
+			({
+				isActive,
+				isPending,
+			}: {
+				isActive: boolean
+				isPending: boolean
+			}) => (isPending ? "pending" : isActive ? "active" : "")
+		)
+	}
+
 	return (
 		<>
 			<h1 className="page-title">Hello</h1>
 			<nav className="menu-items">
-				<ul className="menu-list">
-					<li
-						className="menu-button"
-						onClick={() => toggleExpanded()}
-					>
+				<div className="menu-list">
+					<div className="menu-button" onClick={toggleExpanded}>
 						<ChevronsRight />
-					</li>
-					<li className="menu-item">
-						<Link to="/">
-							<House />
-							<p>Home</p>
-						</Link>
-					</li>
-					<li className="menu-item">
-						<Link to="about">
-							<Info />
-							<p>About</p>
-						</Link>
-					</li>
-					<li className="theme-toggle" onClick={toggleTheme}>
+					</div>
+					<NavLink to={"/"} className={getClassName("menu-item")}>
+						<House />
+						<p>Home</p>
+					</NavLink>
+					<NavLink to={"about"} className={getClassName("menu-item")}>
+						<Info />
+						<p>About</p>
+					</NavLink>
+					<div className="theme-toggle" onClick={toggleTheme}>
 						{theme === "light" ? <Moon /> : <Sun />}
-					</li>
-				</ul>
+					</div>
+				</div>
 			</nav>
 		</>
 	)
